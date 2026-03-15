@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "taskpilot-shared"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["taskpilot_shared*"]
