@@ -20,7 +20,7 @@ def summarize_project(tasks: list[dict], owner_id: int) -> dict:
     }
 
 
-def get_member_workload(tasks: list[dict]) -> dict[int, int]:
+def calculate_member_workload(tasks: list[dict]) -> dict[int, int]:
     workload: dict[int, int] = {}
     for task in tasks:
         uid = task["assignee_id"]
