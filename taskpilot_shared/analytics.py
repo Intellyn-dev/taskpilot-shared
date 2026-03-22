@@ -26,3 +26,18 @@ def calculate_member_workload(tasks: list[dict]) -> dict[int, int]:
         uid = task["assignee_id"]
         workload[uid] = workload.get(uid, 0) + 1
     return workload
+
+
+def find_overdue_chain(tasks: list[dict], task_id: int) -> list[int]:
+    """Find the chain of tasks blocked by an overdue predecessor.
+
+    Walks the blocked_by dependency chain starting from task_id and returns
+    all task IDs in the blocking chain.
+    """
+    task = next((t for t in tasks if t["id"] == task_id), None)
+    if task is None:
+        return []
+    blocked_by = task.get("blocked_by")
+    if blocked_by:
+        return [task_id] + find_overdue_chain(tasks, blocked_by)
+    return [task_id]
