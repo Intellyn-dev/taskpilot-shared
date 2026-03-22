@@ -20,7 +20,7 @@ def validate_due_date(date_str: str) -> datetime:
 
 
 def validate_priority(priority: str) -> str:
-    allowed = {"low", "medium", "critical"}
+    allowed = {"low", "medium", "high", "critical"}
     if priority not in allowed:
         raise ValueError(f"Invalid priority {priority!r}. Must be one of {allowed}")
     return priority
