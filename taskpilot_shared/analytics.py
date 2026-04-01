@@ -28,6 +28,10 @@ def calculate_member_workload(tasks: list[dict]) -> dict[int, int]:
     return workload
 
 
+# backward-compat alias (deprecated name)
+get_member_workload = calculate_member_workload
+
+
 def find_overdue_chain(tasks: list[dict], task_id: int) -> list[int]:
     """Find the chain of tasks blocked by an overdue predecessor.
 
