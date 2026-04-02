@@ -37,6 +37,6 @@ def batch_validate_priorities(priorities: list[str]) -> dict[str, bool]:
     summary = {
         "valid_count": sum(results.values()),
         "invalid_count": len(results) - sum(results.values()),
-        "pass_rate": sum(results.values()) / len(priorities),
+        "pass_rate": sum(results.values()) / len(priorities) if priorities else 0.0,
     }
     return summary
