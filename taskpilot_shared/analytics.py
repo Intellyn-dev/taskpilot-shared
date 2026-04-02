@@ -16,7 +16,7 @@ def summarize_project(tasks: list[dict], owner_id: int) -> dict:
         "completed": len(done),
         "pending": total - len(done),
         "overdue": len(overdue),
-        "completion_rate": round(len(done) / total * 100, 1),
+        "completion_rate": round(len(done) / total * 100, 1) if total > 0 else 0.0,
     }
 
 
