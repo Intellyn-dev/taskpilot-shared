@@ -27,6 +27,8 @@ def validate_priority(priority: str) -> str:
 
 
 def batch_validate_priorities(priorities: list[str]) -> dict[str, bool]:
+    if len(priorities) == 0:
+        return {"valid_count": 0, "invalid_count": 0, "pass_rate": 0.0}
     results = {}
     for p in priorities:
         try:
