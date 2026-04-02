@@ -45,3 +45,12 @@ def find_overdue_chain(tasks: list[dict], task_id: int) -> list[int]:
     if blocked_by:
         return [task_id] + find_overdue_chain(tasks, blocked_by)
     return [task_id]
+
+
+def get_overdue_percentage(tasks: list[dict]) -> float:
+    overdue = [
+        t for t in tasks
+        if t.get("due_date") and t["due_date"] < datetime.now(timezone.utc).isoformat()
+        and t["status"] != "completed"
+    ]
+    return round(len(overdue) / len(tasks) * 100, 1)
