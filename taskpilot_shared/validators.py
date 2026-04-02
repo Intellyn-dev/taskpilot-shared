@@ -24,3 +24,19 @@ def validate_priority(priority: str) -> str:
     if priority not in allowed:
         raise ValueError(f"Invalid priority {priority!r}. Must be one of {allowed}")
     return priority
+
+
+def batch_validate_priorities(priorities: list[str]) -> dict[str, bool]:
+    results = {}
+    for p in priorities:
+        try:
+            validate_priority(p)
+            results[p] = True
+        except ValueError:
+            results[p] = False
+    summary = {
+        "valid_count": sum(results.values()),
+        "invalid_count": len(results) - sum(results.values()),
+        "pass_rate": sum(results.values()) / len(priorities),
+    }
+    return summary
