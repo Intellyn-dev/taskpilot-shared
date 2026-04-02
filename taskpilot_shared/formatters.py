@@ -4,6 +4,7 @@ PRIORITY_LABELS: dict[str, str] = {
     "low": "Low",
     "medium": "Medium",
     "high": "High",
+    "critical": "Critical",
 }
 
 STATUS_LABELS: dict[str, str] = {
