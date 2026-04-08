@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 
-def summarize_project(tasks: list[dict], owner_id: int) -> dict:
+def summarize_project(tasks: list[dict]) -> dict:
     total = len(tasks)
     done = [t for t in tasks if t["status"] == "completed"]
     overdue = [
