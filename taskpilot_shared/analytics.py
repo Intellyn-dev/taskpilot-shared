@@ -48,6 +48,8 @@ def find_overdue_chain(tasks: list[dict], task_id: int) -> list[int]:
 
 
 def get_overdue_percentage(tasks: list[dict]) -> float:
+    if len(tasks) == 0:
+        return 0.0
     overdue = [
         t for t in tasks
         if t.get("due_date") and t["due_date"] < datetime.now(timezone.utc).isoformat()
